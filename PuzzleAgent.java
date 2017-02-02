@@ -7,9 +7,28 @@ import java.util.LinkedList;
 public class PuzzleAgent extends SearchAgent{
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		String[] fileContents = ReadFile(args[0]);
 		
-		System.out.println(ReadFile(args[0]));
+		String initialStr, goalStr;
+		
+		initialStr = fileContents[1] + fileContents[2] + fileContents[3];
+		initialStr = initialStr.replaceAll(" ", "");
+		
+		goalStr = fileContents[5] + fileContents[6] + fileContents[7];
+		goalStr = goalStr.replaceAll(" ", "");
+		
+		System.out.println("Initial board: " + initialStr);
+		System.out.println("Goal board: " + goalStr);
+
+		
+		Board initial, goal;
+		
+		initial = new Board(initialStr);
+		initial.show();
+		
+		goal = new Board(goalStr);
+		goal.show();
+		
 		
 
 	}
@@ -33,7 +52,8 @@ public class PuzzleAgent extends SearchAgent{
 	}
 	
 	
-	private static String ReadFile(String filePath){
+	
+	private static String[] ReadFile(String filePath){
 		String fileContents = "";
 		
 		try {
@@ -44,7 +64,7 @@ public class PuzzleAgent extends SearchAgent{
 			System.exit(0);
 		}
 		
-		return fileContents;
+		return fileContents.split("\\R+");
 	}
 
 }
