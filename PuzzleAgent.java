@@ -8,24 +8,18 @@ public class PuzzleAgent extends SearchAgent{
 
 	public static void main(String[] args) {
 		PuzzleAgent agent = new PuzzleAgent();
-        agent.SolvePuzzle(args[0]);
+        agent.solvePuzzle(args[0]);
 
 	}
 
-    void SolvePuzzle(String initGoalFilePath){
+    void solvePuzzle(String initGoalFilePath){
         problem = new PuzzleProblem();
-
-        tree = new LinkedList<Node>();
-        fringe = new LinkedList<Node>();
-        solution = new LinkedList();
 
 		ReadBoardFile(initGoalFilePath, problem);
 
-        fringe.add(new Node(problem.getInitialState()));
-
-        while(fringe.size() > 0){
-
-        }
+        System.out.println("Starting search...");
+        search();
+        System.out.println("Search complete.");
 
         //agent.problem.getInitialState().show();
         //agent.problem.getGoalState().show();
@@ -45,8 +39,7 @@ public class PuzzleAgent extends SearchAgent{
 
 	@Override
 	void insertFringe(Node nd, LinkedList<Node> ll) {
-		// TODO Auto-generated method stub
-
+		ll.add(nd);
 	}
 
 	private static void ReadBoardFile(String initGoalFilePath, Problem problem){
