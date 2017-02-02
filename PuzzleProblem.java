@@ -38,7 +38,11 @@ public class PuzzleProblem extends Problem{
 	boolean isGoalState(ObjectPlus s) {
         Board b = (Board)s;
 
-		return b.IsGoal((Board)goalState);
+        boolean isGoal =  b.IsGoal((Board)goalState);
+
+        System.out.println(isGoal);
+
+		return isGoal;
 	}
 
 }
