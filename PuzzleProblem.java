@@ -10,7 +10,9 @@ public class PuzzleProblem extends Problem{
 
 	@Override
 	boolean isGoalState(ObjectPlus s) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < 9; i++){
+			
+		}
 		return false;
 	}
 

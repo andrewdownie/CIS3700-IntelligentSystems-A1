@@ -3,11 +3,6 @@ public class Board extends ObjectPlus{
 	
 	char[][] board;
 	
-	
-	public Board(Board board){
-		//TODO: how to get info out from here without exposing it?
-	}
-	
 	public Board(String strBoard){
 		board = new char[3][3];
 		int curIndex = 0;
