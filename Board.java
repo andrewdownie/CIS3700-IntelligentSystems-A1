@@ -131,23 +131,23 @@ public class Board extends ObjectPlus{
 	}
 
 	public boolean IsGoal(Board goalBoard){
-		return goalBoard.differences(board) == 0;
+		return calcHeuristic(goalBoard.board) == 0;
 	}
 
-    int differences(char[][] board){
-        int differenceCount = 0;
+    int calcHeuristic(char[][] goalBoard){
+        int hCost = 0;
 
         for(int x = 0; x < 3; x++){
             for(int y = 0; y < 3; y++){
-                if(this.board[x][y] != board[x][y]){
-                    differenceCount++;
+                if(board[x][y] != goalBoard[x][y] && board[x][y] != HOLE_CHAR){
+                    hCost++;
                 }
             }
         }
 
-        System.out.println("DIF CNT IS: " + differenceCount);
+        //System.out.println("DIF CNT IS: " + hCost);
 
-        return differenceCount;
+        return hCost;
     }
 
 	///

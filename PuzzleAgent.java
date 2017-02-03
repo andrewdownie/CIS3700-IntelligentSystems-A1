@@ -39,7 +39,31 @@ public class PuzzleAgent extends SearchAgent{
 
 	@Override
 	void insertFringe(Node nd, LinkedList<Node> ll) {
+        char[][] goalBoard = ((Board)problem.goalState).board;
+
+        Board b = (Board)nd.state;
+        int hCost = b.calcHeuristic( goalBoard );
+        int gCost = nd.depth;
+        int fCost = 0;
+
+
+        fCost = gCost + fCost;
+
+        for(int i = 0; i < ll.size(); i++){
+            Node curNode = ll.get(i);
+            int curNodeHCost = ((Board)curNode.state).calcHeuristic( goalBoard );
+            int curNodeFCost = curNode.depth + curNodeHCost;
+
+            if(fCost < curNodeFCost){
+                ll.add(i, nd);
+                return;
+            }
+
+        }
+
 		ll.add(nd);
+
+        //TODO: sort the fringe...
 	}
 
 	private static void ReadBoardFile(String initGoalFilePath, Problem problem){

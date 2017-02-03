@@ -31,6 +31,9 @@ public class PuzzleProblem extends Problem{
             successors.add(down);
         }
 
+        //TODO: add to list in order of their heuristic
+        
+
 		return successors;
 	}
 
